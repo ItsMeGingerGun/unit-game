@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { neynar } from "@neynar/nodejs-sdk";
-// import GameComponent from '@/components/GameComponent';
+import GameComponent from '@/components/GameComponent';
 import { motion } from 'framer-motion';
 
 export default function MiniAppPage() {
