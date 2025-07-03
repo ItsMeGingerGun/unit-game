@@ -47,7 +47,7 @@ export async function POST(req: NextRequest) {
         type: 'frame',
         frame: {
           version: 'vNext',
-          image: `${process.env.NEXT_PUBLIC_BASE_URL}/api/puzzle-image?text=${encodeURIComponent(puzzle.text)}`,
+          image: `${process.env.NEXT_PUBLIC_BASE_URL}/api/puzzle-image?text=${encodeURIComponent(puzzle.text)}&date=${Date.now()}`,
           input: { text: 'Enter your answer' },
           buttons: [{ label: 'Submit', action: 'post' }],
           postUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/api/submit-frame-answer`,
