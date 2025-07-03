@@ -1,0 +1,9 @@
+{
+  "name": "Unit Game",
+  "icon": "https://unit-game-ruddy.vercel.app/icon-512x512.png",
+  "permissions": ["user:read"],
+  "app": {
+    "type": "iframe",
+    "url": "https://unit-game-ruddy.vercel.app/miniapp"
+  }
+}
