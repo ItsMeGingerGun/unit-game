@@ -1,4 +1,4 @@
-// app/api/puzzle-image/route.tsx
+// app/api/puzzle-image/route.ts
 import { NextRequest } from 'next/server';
 import { ImageResponse } from 'next/og';
 
@@ -7,38 +7,29 @@ export async function GET(req: NextRequest) {
   
   return new ImageResponse(
     (
-      <div
-        style={{
-          display: 'flex',
-          background: '#000',
-          width: '100%',
-          height: '100%',
-          color: 'white',
-          padding: '50px',
-          textAlign: 'center',
-          justifyContent: 'center',
-          alignItems: 'center',
-          fontSize: 60,
-          fontWeight: 'bold'
-        }}
-      >
-        {text}
-      </div>
+      {
+        type: 'div',
+        props: {
+          children: text,
+          style: {
+            display: 'flex',
+            background: '#000',
+            width: '100%',
+            height: '100%',
+            color: 'white',
+            padding: '50px',
+            textAlign: 'center',
+            justifyContent: 'center',
+            alignItems: 'center',
+            fontSize: 60,
+            fontWeight: 'bold'
+          }
+        }
+      }
     ),
     {
       width: 1200,
-      height: 630,
-      // Add fonts if needed
-      fonts: [
-        {
-          name: 'Inter',
-          data: await fetch(
-            new URL('@/assets/Inter-Regular.ttf', import.meta.url)
-          ).then((res) => res.arrayBuffer()),
-          style: 'normal',
-          weight: 400
-        }
-      ]
+      height: 630
     }
   );
 }
