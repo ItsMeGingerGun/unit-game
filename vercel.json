@@ -10,14 +10,5 @@
     "env": {
       "NODE_ENV": "production"
     }
-  },
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Frame-Options",
-          "value": "ALLOW-FROM https://client.warpcast.com"
-        }
-      ]
-}
+  }
+  }
