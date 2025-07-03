@@ -1,4 +1,4 @@
-// app/api/puzzle-image/route.ts
+// app/api/puzzle-image/route.tsx
 import { ImageResponse } from 'next/og';
 
 export async function GET(req: Request) {
@@ -16,7 +16,8 @@ export async function GET(req: Request) {
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
-          padding: 50,
+          padding: '50px',
+          fontFamily: 'sans-serif',
         }}
       >
         <div style={{ fontSize: 32, fontWeight: 600 }}>{text}</div>
