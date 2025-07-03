@@ -1,4 +1,4 @@
-// app/api/result-image/route.ts
+// app/api/result-image/route.tsx
 import { ImageResponse } from 'next/og';
 
 export async function GET(req: Request) {
@@ -16,7 +16,8 @@ export async function GET(req: Request) {
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
-          padding: 50,
+          padding: '50px',
+          fontFamily: 'sans-serif',
         }}
       >
         <div style={{ fontSize: 36, fontWeight: 700, color: correct ? '#15803d' : '#b91c1c' }}>
