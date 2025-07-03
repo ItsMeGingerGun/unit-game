@@ -1,5 +1,5 @@
-import { generatePuzzle } from '@/lib/game'
-import { redis } from '@/lib/redis'
+import { generatePuzzle } from '@/lib/game';
+import { redis } from '@/lib/redis';
 
 export async function POST(req: Request) {
   const { difficulty, fid } = await req.json();
