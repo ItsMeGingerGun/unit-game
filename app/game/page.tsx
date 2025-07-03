@@ -1,6 +1,6 @@
 // app/game/page.tsx
 'use client';
-import { useState } from 'react'; 
+import { useState } from 'react';
 
 export default function GamePage() {
   const [fid, setFid] = useState<string | null>(null);
@@ -8,14 +8,21 @@ export default function GamePage() {
   const [puzzle, setPuzzle] = useState<any>(null);
   
   // app/game/page.tsx
-
 const farcasterLogin = () => {
+  // Get your App ID from Neynar dashboard
+  const appId = process.env.NEXT_PUBLIC_APP_ID;
+  
+  if (!appId) {
+    console.error('App ID not configured');
+    return;
+  }
+
+  // Proper Warpcast sign-in URL
   window.open(
-    `https://client.farcaster.xyz/deeplinks/sign-in?appId=${process.env.NEXT_PUBLIC_APP_ID}`,
+    `https://client.farcaster.xyz/deeplinks/sign-in?appId=${appId}`,
     '_blank',
     'width=600,height=700'
   );
-}
   
   // Listen for messages from the login window
   window.addEventListener('message', (event) => {
