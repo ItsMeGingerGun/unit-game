@@ -1,10 +1,18 @@
-// next.config.js
+const path = require('path');
+
 module.exports = {
-  output: 'standalone',
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@/lib': path.resolve(__dirname, 'lib'),
+      '@/app': path.resolve(__dirname, 'app')
+    };
+    return config;
+  },
   eslint: {
-    ignoreDuringBuilds: true, // Temporarily disable ESLint during build
+    ignoreDuringBuilds: true,
   },
   typescript: {
-    ignoreBuildErrors: true, // Temporarily disable TypeScript errors
+    ignoreBuildErrors: true,
   }
 };
