@@ -7,10 +7,32 @@ export default function GamePage() {
   const [difficulty, setDifficulty] = useState('easy');
   const [puzzle, setPuzzle] = useState<any>(null);
   
-  const farcasterLogin = () => {
-    window.open(`https://warpcast.com/~/sign-in?appId=${process.env.NEXT_PUBLIC_APP_ID}`);
-  };
+  // app/game/page.tsx
+const farcasterLogin = () => {
+  // Get your App ID from Neynar dashboard
+  const appId = process.env.NEXT_PUBLIC_APP_ID;
   
+  if (!appId) {
+    console.error('App ID not configured');
+    return;
+  }
+
+  // Proper Warpcast sign-in URL
+  window.open(
+    `https://client.warpcast.com/deeplinks/sign-in?appId=${appId}`,
+    '_blank',
+    'width=600,height=700'
+  );
+  
+  // Listen for messages from the login window
+  window.addEventListener('message', (event) => {
+    if (event.origin !== window.location.origin) return;
+    
+    if (event.data.type === 'farcaster:sign-in-success') {
+      setFid(event.data.fid);
+    }
+  });
+};
   const startGame = async () => {
     const res = await fetch('/api/start-game', {
       method: 'POST',
