@@ -19,7 +19,7 @@ const farcasterLogin = () => {
 
   // Proper Warpcast sign-in URL
   window.open(
-    `https://client.warpcast.com/deeplinks/sign-in?appId=${appId}`,
+    `https://client.farcaster.xyz/deeplinks/sign-in?appId=${appId}`,
     '_blank',
     'width=600,height=700'
   );
