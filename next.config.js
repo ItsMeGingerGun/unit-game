@@ -1,18 +1,19 @@
-const path = require('path');
+// next.config.js
+const { createContentlayerPlugin } = require('next-contentlayer');
 
-module.exports = {
-  webpack: (config) => {
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      '@/lib': path.resolve(__dirname, 'lib'),
-      '@/app': path.resolve(__dirname, 'app')
-    };
-    return config;
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+    ],
   },
- eslint: {
-    ignoreDuringBuilds: true,
+  experimental: {
+    serverComponentsExternalPackages: ['@vercel/og'],
   },
-  typescript: {
-    ignoreBuildErrors: true,
-  }
 };
+
+module.exports = nextConfig;
