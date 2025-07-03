@@ -9,7 +9,7 @@ module.exports = {
     };
     return config;
   },
-  eslint: {
+ eslint: {
     ignoreDuringBuilds: true,
   },
   typescript: {
