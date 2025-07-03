@@ -15,4 +15,9 @@ export const generatePuzzle = (difficulty: 'easy' | 'medium' | 'hard') => {
     answer,
     timeLimit: difficulty === 'easy' ? 20 : difficulty === 'medium' ? 15 : 10
   };
+  export const validateAnswer = async (puzzleId: string, userAnswer: string) => {
+  // Implement your actual validation logic here
+  // For now, return true for testing
+  return true;
+};
 };
