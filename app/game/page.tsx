@@ -1,6 +1,6 @@
 // app/game/page.tsx
 'use client';
-import { useState } from 'react';
+import { useState } from 'react'; 
 
 export default function GamePage() {
   const [fid, setFid] = useState<string | null>(null);
