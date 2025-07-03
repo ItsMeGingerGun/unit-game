@@ -1,21 +1,22 @@
-// app/frame/route.ts
+
 import { NextRequest, NextResponse } from 'next/server';
 import { generatePuzzle } from '@/lib/game';
 
 export async function POST(req: NextRequest) {
-  // Parse Frame action data
   const body = await req.json();
-  const buttonIndex = body.untrustedData.buttonIndex;
-  const fid = body.untrustedData.fid;
-
-  // Handle difficulty selection
+  const buttonIndex = body.untrustedData?.buttonIndex || 1;
+  const fid = body.untrustedData?.fid || '0';
+  
   const difficulties = ['easy', 'medium', 'hard'];
   const difficulty = difficulties[buttonIndex - 1] || 'easy';
-
-  // Generate puzzle
   const puzzle = generatePuzzle(difficulty);
 
-  // Return Frame response
+  const state = JSON.stringify({
+    difficulty,
+    puzzleId: puzzle.id,
+    fid
+  });
+
   return new NextResponse(`
     <!DOCTYPE html>
     <html>
@@ -25,11 +26,14 @@ export async function POST(req: NextRequest) {
         <meta property="fc:frame:input:text" content="Enter your answer">
         <meta property="fc:frame:button:1" content="Submit">
         <meta property="fc:frame:post_url" content="${process.env.NEXT_PUBLIC_BASE_URL}/api/submit-frame-answer">
-        <meta property="fc:frame:state" content='{"difficulty":"${difficulty}","puzzleId":"${puzzle.id}","fid":"${fid}"}'>
+        <meta property="fc:frame:state" content='${state.replace(/'/g, "\\'")}'>
       </head>
     </html>
   `, {
     status: 200,
-    headers: { 'Content-Type': 'text/html' }
+    headers: { 
+      'Content-Type': 'text/html',
+      'Cache-Control': 'public, max-age=0' 
+    }
   });
 }
