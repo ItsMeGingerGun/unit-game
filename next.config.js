@@ -1,6 +1,4 @@
 // next.config.js
-const { createContentlayerPlugin } = require('next-contentlayer');
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
