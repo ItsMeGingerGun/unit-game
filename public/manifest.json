@@ -4,6 +4,6 @@
   "permissions": ["user:read"],
   "app": {
     "type": "iframe",
-    "url": "https://unit-game-ruddy.vercel.app/miniapp"
+    "url": "https://unit-game-ruddy.vercel.app/miniapp" 
   }
 }
