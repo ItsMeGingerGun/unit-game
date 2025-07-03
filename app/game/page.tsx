@@ -1,3 +1,13 @@
+import Link from 'next/link';
+
+export default function Home() {
+  return (
+    <main>
+      <h1>Unit Conversion Game</h1>
+      <Link href="/game">Start Playing</Link>
+    </main>
+  );
+}
 'use client';
 import { useState, useEffect } from 'react';
 
