@@ -1,7 +1,6 @@
 {
   "build": {
     "env": {
-      "NEYNAR_API_KEY": "@neynar-api-key",
       "REDIS_URL": "@redis-url",
       "REDIS_TOKEN": "@redis-token"
     }
