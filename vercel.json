@@ -1,3 +1,4 @@
+// vercel.json
 {
   "version": 2,
   "builds": [
@@ -6,19 +7,16 @@
       "use": "@vercel/next"
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
     },
     {
-      "src": "/(.*)",
-      "dest": "/$1",
-      "continue": true
+      "source": "/(.*)",
+      "destination": "/$1"
     }
   ],
-  "env": {},
-  "public": false,
   "cleanUrls": true,
   "trailingSlash": false
 }
