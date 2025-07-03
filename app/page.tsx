@@ -9,6 +9,17 @@ export default function LandingPage() {
   const [difficulty, setDifficulty] = useState('easy');
   const [playerCount, setPlayerCount] = useState(1284);
   const [solvedCount, setSolvedCount] = useState(35892);
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    setIsLoading(false);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="fixed inset-0 flex items-center justify-center bg-gradient-to-br from-purple-600 to-indigo-600 z-50">
+        <div className="loading-spinner"></div>
+      </div>
+    );
 
   const unitExamples = [
     { from: 'kg', to: 'g', value: 1.5, answer: 1500 },
