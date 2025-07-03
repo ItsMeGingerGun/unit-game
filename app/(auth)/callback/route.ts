@@ -1,3 +1,4 @@
+// app/(auth)/callback/route.ts
 import { NeynarAPIClient } from '@neynar/nodejs-sdk';
 
 export async function POST(req: Request) {
@@ -9,19 +10,17 @@ export async function POST(req: Request) {
     }
 
     const client = new NeynarAPIClient(process.env.NEYNAR_API_KEY);
-    
-    // Correct method name is verifyFrameAction
-    const result = await client.verifyFrameAction(messageBytes);
+    const result = await client.validateFrameAction(messageBytes);
     
     if (!result.valid) {
       return Response.json({ error: 'Invalid signature' }, { status: 401 });
     }
 
-    return Response.json({ fid: result.action?.interactor.fid || '' });
+    return Response.json({ fid: result.interactor.fid });
   } catch (error) {
     console.error('Farcaster login error:', error);
     return Response.json(
-      { error: 'Authentication failed' },
+      { error: 'Could not authenticate with Farcaster' },
       { status: 500 }
     );
   }
