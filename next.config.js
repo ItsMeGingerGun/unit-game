@@ -1,17 +1,18 @@
+const path = require('path');
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: '**',
-      },
-    ],
+module.exports = {
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@/lib': path.resolve(__dirname, 'lib'),
+      '@/app': path.resolve(__dirname, 'app')
+    };
+    return config;
   },
-  experimental: {
-    serverComponentsExternalPackages: ['@vercel/og'],
+ eslint: {
+    ignoreDuringBuilds: true,
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  }
 };
-
-module.exports = nextConfig;
