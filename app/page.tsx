@@ -10,16 +10,6 @@ export default function LandingPage() {
   const [playerCount, setPlayerCount] = useState(1284);
   const [solvedCount, setSolvedCount] = useState(35892);
   const [isLoading, setIsLoading] = useState(true);
-  useEffect(() => {
-    setIsLoading(false);
-  }, []);
-
-  if (isLoading) {
-    return (
-      <div className="fixed inset-0 flex items-center justify-center bg-gradient-to-br from-purple-600 to-indigo-600 z-50">
-        <div className="loading-spinner"></div>
-      </div>
-    );
 
   const unitExamples = [
     { from: 'kg', to: 'g', value: 1.5, answer: 1500 },
@@ -39,7 +29,7 @@ export default function LandingPage() {
       setActiveUnit(prev => (prev + 1) % unitExamples.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [unitExamples.length]);
 
   // Animated counters
   useEffect(() => {
@@ -57,8 +47,41 @@ export default function LandingPage() {
     };
   }, []);
 
+  useEffect(() => {
+    setIsLoading(false);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="fixed inset-0 flex items-center justify-center bg-gradient-to-br from-purple-600 to-indigo-600 z-50">
+        <div className="w-16 h-16 border-4 border-purple-300 border-t-purple-600 rounded-full animate-spin"></div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-purple-100">
+      {/* Background blobs */}
+      <div className="fixed inset-0 overflow-hidden -z-10">
+        {Array.from({ length: 8 }).map((_, i) => (
+          <div 
+            key={i}
+            className="absolute rounded-full animate-float"
+            style={{
+              width: `${Math.random() * 300 + 100}px`,
+              height: `${Math.random() * 300 + 100}px`,
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              background: `radial-gradient(circle, rgba(${
+                i % 2 === 0 ? '126, 34, 206' : '79, 70, 229'
+              }, 0.15), transparent)`,
+              animationDuration: `${Math.random() * 20 + 10}s`,
+              animationDelay: `${i * 2}s`,
+            }}
+          />
+        ))}
+      </div>
+      
       {/* Hero Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12 text-center">
         <h1 className="text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-600">
@@ -73,7 +96,7 @@ export default function LandingPage() {
         <div className="mt-8">
           <Link 
             href="/game" 
-            className="inline-block bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold py-3 px-6 rounded-full text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+            className="inline-block bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold py-3 px-6 rounded-full text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:from-purple-700 hover:to-indigo-700"
           >
             Play Now
           </Link>
