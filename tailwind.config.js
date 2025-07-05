@@ -1,3 +1,4 @@
+// tailwind.config.js
 module.exports = {
   content: [
     './app/**/*.{js,ts,jsx,tsx,mdx}',
@@ -7,8 +8,6 @@ module.exports = {
       animation: {
         float: 'float 12s ease-in-out infinite',
         spin: 'spin 1s linear infinite',
-        'pulse-slow': 'pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'fade-in': 'fadeIn 0.6s ease-out forwards',
       },
       keyframes: {
         float: {
@@ -20,14 +19,6 @@ module.exports = {
         },
         spin: {
           to: { transform: 'rotate(360deg)' },
-        },
-        'pulse-slow': {
-          '0%, 100%': { opacity: '1' },
-          '50%': { opacity: '0.5' },
-        },
-        fadeIn: {
-          from: { opacity: '0', transform: 'translateY(10px)' },
-          to: { opacity: '1', transform: 'translateY(0)' },
         },
       },
     },
