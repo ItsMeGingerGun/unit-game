@@ -1,7 +1,7 @@
 // app/api/submit-frame-answer/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { neynar } from '@neynar/nodejs-sdk';
-import { checkAnswer } from '@/lib/game';
+import game from '@/lib/game'; // Updated import
 
 export async function POST(req: NextRequest) {
   try {
@@ -13,14 +13,15 @@ export async function POST(req: NextRequest) {
     const state = untrustedData.state ? JSON.parse(untrustedData.state) : {};
     const answer = untrustedData.inputText || '';
     const puzzleId = state.puzzleId;
+    const correctAnswer = state.correctAnswer; // Add this
     const fid = state.fid || untrustedData.fid;
 
     // Validate frame action
     const neynarClient = new neynar.ApiClient(process.env.NEYNAR_API_KEY!);
     await neynarClient.validateFrameAction(trustedData.messageBytes);
     
-    // Check answer (implement your logic)
-    const isCorrect = checkAnswer(puzzleId, answer);
+    // Check answer
+    const isCorrect = game.checkAnswer(parseFloat(answer), correctAnswer); // Updated call
     
     // Build response
     return NextResponse.json({
@@ -32,6 +33,12 @@ export async function POST(req: NextRequest) {
           { label: 'Play Again', action: 'post', target: `${process.env.NEXT_PUBLIC_BASE_URL}/api/frame` }
         ],
         postUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/api/frame`,
+        state: {
+          fid,
+          puzzleId,
+          correctAnswer,
+          previousAnswer: answer
+        }
       }
     });
     
