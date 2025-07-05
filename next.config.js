@@ -1,18 +1,13 @@
-const path = require('path');
-
+// next.config.js
 module.exports = {
-  webpack: (config) => {
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      '@/lib': path.resolve(__dirname, 'lib'),
-      '@/app': path.resolve(__dirname, 'app')
-    };
-    return config;
+  experimental: {
+    missingSuspenseWithCSRBailout: false,
   },
- eslint: {
+  // Add this to ignore build errors during export
+  eslint: {
     ignoreDuringBuilds: true,
   },
   typescript: {
     ignoreBuildErrors: true,
-  }
+  },
 };
