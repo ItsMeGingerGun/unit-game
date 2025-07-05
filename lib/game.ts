@@ -111,6 +111,11 @@ export function formatUnit(unit: string): string {
     'MB': 'megabytes',
     'GB': 'gigabytes',
   };
+  export default {
+  generatePuzzle,
+  checkAnswer,
+  formatUnit
+};
   
   return unitFormats[unit] || unit;
 }
