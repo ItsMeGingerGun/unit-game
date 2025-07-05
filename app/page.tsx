@@ -60,28 +60,7 @@ export default function LandingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-purple-100">
-      {/* Background blobs */}
-      <div className="fixed inset-0 overflow-hidden -z-10">
-        {Array.from({ length: 8 }).map((_, i) => (
-          <div 
-            key={i}
-            className="absolute rounded-full animate-float"
-            style={{
-              width: `${Math.random() * 300 + 100}px`,
-              height: `${Math.random() * 300 + 100}px`,
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              background: `radial-gradient(circle, rgba(${
-                i % 2 === 0 ? '126, 34, 206' : '79, 70, 229'
-              }, 0.15), transparent)`,
-              animationDuration: `${Math.random() * 20 + 10}s`,
-              animationDelay: `${i * 2}s`,
-            }}
-          />
-        ))}
-      </div>
-      
+    <div className="min-h-screen">
       {/* Hero Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12 text-center">
         <h1 className="text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-600">
