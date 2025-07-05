@@ -21,8 +21,8 @@ export default function RootLayout({
           rel="stylesheet" 
         />
       </head>
-      <body>
-        {/* Background blobs container */}
+      <body className="relative">
+        {/* Background blobs container - outside of main content */}
         <div className="background-blobs">
           {[...Array(8)].map((_, i) => (
             <div 
@@ -43,7 +43,10 @@ export default function RootLayout({
           ))}
         </div>
         
-        {children}
+        {/* Main content */}
+        <div className="relative z-10">
+          {children}
+        </div>
       </body>
     </html>
   );
