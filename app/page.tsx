@@ -1,4 +1,4 @@
-// app/page.tsx landing page
+// app/page.tsx landing page test
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
