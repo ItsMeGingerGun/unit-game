@@ -41,4 +41,15 @@ The app is built with a modern tech stack optimized for performance and scalabil
   - Unit conversion algorithms
   - Score calculation system
   - Difficulty scaling
+  - Random unit conversion problem appears
 
+**Gameplay:**
+  - Random unit conversion problem appears
+  - Player enters answer
+  - Correct answers earn 100 points
+  - Timer counts down continuously
+
+**Completion:**
+  - Final score displayed
+  - Share to Farcaster option
+  - Leaderboard updated in real-time
