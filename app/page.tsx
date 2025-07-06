@@ -2,7 +2,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { FaClock, FaTrophy, FaShieldAlt, FaArrowRight } from 'react-icons/fa';
+import { FaClock, FaTrophy, FaArrowRight } from 'react-icons/fa';
 
 export default function LandingPage() {
   const [activeUnit, setActiveUnit] = useState(0);
@@ -74,7 +74,7 @@ export default function LandingPage() {
         
         <div className="mt-8">
           <Link 
-            href="/game" 
+            href="/miniapp" 
             className="inline-block bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold py-3 px-6 rounded-full text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:from-purple-700 hover:to-indigo-700"
           >
             Play Now
@@ -156,9 +156,9 @@ export default function LandingPage() {
                   </li>
                   <li className="flex items-start">
                     <div className="bg-purple-100 text-purple-600 rounded-full p-1 mr-3 mt-1">
-                      <FaShieldAlt className="h-4 w-4" />
+                      <FaTrophy className="h-4 w-4" />
                     </div>
-                    <span>Secure Farcaster login</span>
+                    <span>Seamless Farcaster miniapp integration</span>
                   </li>
                 </ul>
                 
@@ -210,10 +210,10 @@ export default function LandingPage() {
           
           <div className="bg-white p-6 rounded-xl shadow-lg text-center transition-transform hover:-translate-y-1">
             <div className="w-14 h-14 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <FaShieldAlt className="h-6 w-6 text-purple-600" />
+              <FaTrophy className="h-6 w-6 text-purple-600" />
             </div>
-            <h3 className="text-lg font-bold text-gray-900 mb-2">Secure Login</h3>
-            <p className="text-gray-600">Connect with Farcaster to save your progress securely.</p>
+            <h3 className="text-lg font-bold text-gray-900 mb-2">Miniapp Integration</h3>
+            <p className="text-gray-600">Play directly within Farcaster with automatic login.</p>
           </div>
         </div>
       </div>
@@ -226,13 +226,13 @@ export default function LandingPage() {
             Join thousands of players mastering unit conversions in our competitive game.
           </p>
           <Link 
-            href="/game" 
+            href="/miniapp" 
             className="inline-block bg-white text-purple-600 font-bold py-3 px-8 rounded-full text-lg shadow-lg hover:bg-gray-100 transition-all duration-300"
           >
             Start Playing Now
           </Link>
           <div className="mt-4 text-purple-200 text-sm">
-            No installation needed • Play directly in your browser
+            No installation needed • Play directly in Farcaster
           </div>
         </div>
       </div>
