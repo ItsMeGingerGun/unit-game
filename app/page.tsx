@@ -31,7 +31,7 @@ export default function LandingPage() {
     return () => clearInterval(interval);
   }, [unitExamples.length]);
 
-  // Animated counters
+  // Animated counters will it works
   useEffect(() => {
     const playerInterval = setInterval(() => {
       setPlayerCount(prev => prev + 1);
