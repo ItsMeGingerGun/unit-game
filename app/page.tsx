@@ -12,7 +12,7 @@ export default function LandingPage() {
   const [isLoading, setIsLoading] = useState(true);
 
   const unitExamples = [
-    { from: 'kg', to: 'g', value: 1.5, answer: 1500 },
+    { from: 'kg', to: 'g', value: 1.5, answer: 1500 }, 
     { from: 'mm', to: 'm', value: 2500, answer: 2.5 },
     { from: 'ml', to: 'L', value: 750, answer: 0.75 },
   ];
