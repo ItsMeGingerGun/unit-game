@@ -1,38 +1,19 @@
 // app/game/page.tsx
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 
 export default function GamePage() {
+  const searchParams = useSearchParams();
   const [fid, setFid] = useState<string | null>(null);
   const [difficulty, setDifficulty] = useState('easy');
   const [puzzle, setPuzzle] = useState<any>(null);
   
-  // app/game/page.tsx
-const farcasterLogin = () => {
-  // Get your App ID from Neynar dashboard
-  const appId = process.env.NEXT_PUBLIC_APP_ID;
-  
-  if (!appId) {
-    console.error('App ID not configured');
-    return;
-  }
+  useEffect(() => {
+    const fidParam = searchParams.get('fid');
+    if (fidParam) setFid(fidParam);
+  }, [searchParams]);
 
-  // Proper Warpcast sign-in URL
-  window.open(
-    `https://client.farcaster.xyz/deeplinks/sign-in?appId=${appId}`,
-    '_blank',
-    'width=600,height=700'
-  );
-  
-  // Listen for messages from the login window
-  window.addEventListener('message', (event) => {
-    if (event.origin !== window.location.origin) return;
-    
-    if (event.data.type === 'farcaster:sign-in-success') {
-      setFid(event.data.fid);
-    }
-  });
-};
   const startGame = async () => {
     const res = await fetch('/api/start-game', {
       method: 'POST',
@@ -51,12 +32,10 @@ const farcasterLogin = () => {
   return (
     <div className="max-w-md mx-auto p-6">
       {!fid ? (
-        <button 
-          onClick={farcasterLogin}
-          className="w-full bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition-colors"
-        >
-          Login with Farcaster
-        </button>
+        <div className="text-center py-8">
+          <p className="mb-4">Loading user information...</p>
+          <div className="w-12 h-12 border-t-4 border-purple-500 rounded-full animate-spin mx-auto"></div>
+        </div>
       ) : (
         <div className="space-y-6">
           <div>
