@@ -6,9 +6,15 @@
       "use": "@vercel/next"
     }
   ],
-  "build": {
-    "env": {
-      "NODE_ENV": "production"
-    }
+  "rewrites": [
+    { "source": "/miniapp", "destination": "/miniapp" },
+    { "source": "/embed", "destination": "/embed" }
+  ],
+  "env": {
+    "NEYNAR_API_KEY": "@neynar-api-key",
+    "SIGNER_UUID": "@signer-uuid",
+    "REDIS_URL": "@redis-url",
+    "REDIS_TOKEN": "@redis-token",
+    "NEXT_PUBLIC_BASE_URL": "https://unit-game-ruddy.vercel.app"
   }
-  }
+}
