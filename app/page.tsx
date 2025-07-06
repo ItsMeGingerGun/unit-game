@@ -23,7 +23,7 @@ export default function LandingPage() {
     { name: 'conversionqueen', score: 1750 },
   ];
 
-  // Auto-rotate unit examples
+  // Auto-rotate unit examples for game
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveUnit(prev => (prev + 1) % unitExamples.length);
