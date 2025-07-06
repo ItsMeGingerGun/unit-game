@@ -17,5 +17,4 @@
     "REDIS_TOKEN": "@redis-token",
     "NEXT_PUBLIC_BASE_URL": "https://unit-game-ruddy.vercel.app"
   }
-  
  }
